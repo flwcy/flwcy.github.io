@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[JDBC入门]]></title>
-      <url>http://localhost:4000/2016/06/30/start_jdbc/</url>
+      <url>http://flwcy.coding.me/2016/06/30/start_jdbc/</url>
       <content type="html"><![CDATA[<p>了解jdbc的基本概念并编写相应的jdbc代码<br><a id="more"></a></p>
 <h3 id="一-初识JDBC"><a href="#一-初识JDBC" class="headerlink" title="(一) 初识JDBC"></a><strong>(一) 初识JDBC</strong></h3><h4 id="jdbc的概念"><a href="#jdbc的概念" class="headerlink" title="jdbc的概念"></a><strong>jdbc的概念</strong></h4><pre><code>jdbc:java data base connectivity
 jdbc由一些接口和类构成的api，是javaSE的一部分，位于java.sql以及javax.sql包下。
@@ -36,7 +36,7 @@ sun公司提供了这些连接数据库的规范，由数据库的生产厂商�
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>http://localhost:4000/2016/06/28/hello-world/</url>
+      <url>http://flwcy.coding.me/2016/06/28/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
