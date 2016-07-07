@@ -40,7 +40,7 @@
     <entry>
       <title><![CDATA[JDBC入门]]></title>
       <url>http://flwcy.coding.me/2016/06/30/start-jdbc/</url>
-      <content type="html"><![CDATA[<p>了解jdbc的基本概念并编写相应的jdbc代码<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>什么是JDBC?<br>Java语言访问数据库的一种规范,是一套API。JDBC (Java Database Connectivity) API，即Java数据库编程接口，是一组标准的Java语言中的接口和类，使用这些接口和类，Java客户端程序可以访问各种不同类型的数据库。比如建立数据库连接、执行SQL语句进行数据的存取操作。<br><a id="more"></a></p>
 <h3 id="一-初识JDBC"><a href="#一-初识JDBC" class="headerlink" title="(一) 初识JDBC"></a><strong>(一) 初识JDBC</strong></h3><h4 id="jdbc的概念"><a href="#jdbc的概念" class="headerlink" title="jdbc的概念"></a><strong>jdbc的概念</strong></h4><pre><code>jdbc:java data base connectivity
 jdbc由一些接口和类构成的api，是javaSE的一部分，位于java.sql以及javax.sql包下。
 sun公司提供了这些连接数据库的规范，由数据库的生产厂商提供驱动程序。
