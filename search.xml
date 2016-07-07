@@ -4,16 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[hexo搭建个人博客]]></title>
       <url>http://flwcy.coding.me/2016/07/05/build-personal-blog/</url>
-      <content type="html"><![CDATA[<hr>
-<p> title: hexo搭建个人博客<br> date: 2016-07-05 23:32:12<br> categories:</p>
-<ul>
-<li>技术札记<br>tags:</li>
-<li>Hexo</li>
-</ul>
-<hr>
-<blockquote>
+      <content type="html"><![CDATA[<blockquote>
 <p>本文主要基于window系统以及Hexo3版本，其他系统除了软件的安装方式和命令有些差异，其他基本一样。一般hexo都是托管在github上，但是毕竟github是国外的网站，访问速度上还是有点慢，所以就将博客部署在国内的托管平台coding上。<br> <a id="more"></a></p>
 <h2 id="前置步骤"><a href="#前置步骤" class="headerlink" title="前置步骤"></a>前置步骤</h2><p> 所需软件:</p>
 </blockquote>
