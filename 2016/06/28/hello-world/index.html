@@ -76,6 +76,23 @@
     }
 </script>
 
+<script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = "(つェ⊂)我藏好了哦~ " + OriginTitile;
+            clearTimeout(titleTime);
+        }
+        else {
+            document.title = "(*´∇｀*) 被你发现啦~ " + OriginTitile;
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+</script>
+
 
     <script>
         yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
@@ -213,7 +230,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">攻城狮，程序猿，目前就职于苏州某it公司。</div>
+                    <div id="js-aboutme">与80后一起长大的90后，职业coder，想法挺多，成就没有，喜欢NBA，爱玩游戏。</div>
                 </section>
                 
             </div>
@@ -356,7 +373,7 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/30/start_jdbc/">
+                <a href="/2016/06/30/start-jdbc/">
                     JDBC入门
                 </a>
             </div>
@@ -476,7 +493,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/30/start_jdbc/" title="上一篇: JDBC入门">
+            <a href="/2016/06/30/start-jdbc/" title="上一篇: JDBC入门">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -488,7 +505,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/start_jdbc/">JDBC入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/build-personal-blog/">build-personal-blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/start-jdbc/">JDBC入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hello-world/">Hello World</a></li></ul>
 
 
 

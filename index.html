@@ -80,6 +80,23 @@
     }
 </script>
 
+<script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = "(つェ⊂)我藏好了哦~ " + OriginTitile;
+            clearTimeout(titleTime);
+        }
+        else {
+            document.title = "(*´∇｀*) 被你发现啦~ " + OriginTitile;
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+</script>
+
 
     <script>
         yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
@@ -217,7 +234,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">攻城狮，程序猿，目前就职于苏州某it公司。</div>
+                    <div id="js-aboutme">与80后一起长大的90后，职业coder，想法挺多，成就没有，喜欢NBA，爱玩游戏。</div>
                 </section>
                 
             </div>
@@ -273,19 +290,85 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-start_jdbc" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-build-personal-blog" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/30/start_jdbc/" class="article-date">
+      <a href="/2016/07/05/build-personal-blog/" class="article-date">
+      <time datetime="2016-07-05T15:32:12.172Z" itemprop="datePublished">2016-07-05</time>
+</a>
+
+ 
+    <a href="/2016/07/05/build-personal-blog/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count"  data-thread-key="2016/07/05/build-personal-blog/" ></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <hr>
+<p> title: hexo搭建个人博客<br> date: 2016-07-05 23:32:12<br> categories:</p>
+<ul>
+<li>技术札记<br>tags:</li>
+<li>Hexo</li>
+</ul>
+<hr>
+<blockquote>
+<p>本文主要基于window系统以及Hexo3版本，其他系统除了软件的安装方式和命令有些差异，其他基本一样。一般hexo都是托管在github上，但是毕竟github是国外的网站，访问速度上还是有点慢，所以就将博客部署在国内的托管平台coding上。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2016/07/05/build-personal-blog/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-start-jdbc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/30/start-jdbc/" class="article-date">
       <time datetime="2016-06-29T17:55:05.673Z" itemprop="datePublished">2016-06-30</time>
 </a>
 
  
-    <a href="/2016/06/30/start_jdbc/#comments" title="查看评论">
+    <a href="/2016/06/30/start-jdbc/#comments" title="查看评论">
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <span class="count-comment"></span>
         
-            <span class="ds-thread-count"  data-thread-key="2016/06/30/start_jdbc/" ></span>
+            <span class="ds-thread-count"  data-thread-key="2016/06/30/start-jdbc/" ></span>
         
         
     </a>
@@ -301,7 +384,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/start_jdbc/">JDBC入门</a>
+      <a class="article-title" href="/2016/06/30/start-jdbc/">JDBC入门</a>
     </h1>
   
 
@@ -331,7 +414,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/06/30/start_jdbc/#more">阅读全文 >></a>
+          <a href="/2016/06/30/start-jdbc/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

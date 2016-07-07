@@ -75,6 +75,23 @@
     }
 </script>
 
+<script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = "(つェ⊂)我藏好了哦~ " + OriginTitile;
+            clearTimeout(titleTime);
+        }
+        else {
+            document.title = "(*´∇｀*) 被你发现啦~ " + OriginTitile;
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+</script>
+
 
     <script>
         yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
@@ -212,7 +229,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">攻城狮，程序猿，目前就职于苏州某it公司。</div>
+                    <div id="js-aboutme">与80后一起长大的90后，职业coder，想法挺多，成就没有，喜欢NBA，爱玩游戏。</div>
                 </section>
                 
             </div>
@@ -283,7 +300,7 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
           <div class="article-meta">
-              <a href="/2016/06/30/start_jdbc/" class="archive-article-date">
+              <a href="/2016/06/30/start-jdbc/" class="archive-article-date">
       <time datetime="2016-06-29T17:55:05.673Z" itemprop="datePublished">06-30</time>
 </a>
 
@@ -292,7 +309,7 @@
          
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/30/start_jdbc/">JDBC入门</a>
+      <a class="archive-article-title" href="/2016/06/30/start-jdbc/">JDBC入门</a>
     </h1>
   
 

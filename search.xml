@@ -4,8 +4,49 @@
   
     
     <entry>
+      <title></title>
+      <url>http://flwcy.coding.me/2016/07/05/build-personal-blog/</url>
+      <content type="html"><![CDATA[<hr>
+<p> title: hexo搭建个人博客<br> date: 2016-07-05 23:32:12<br> categories:</p>
+<ul>
+<li>技术札记<br>tags:</li>
+<li>Hexo</li>
+</ul>
+<hr>
+<blockquote>
+<p>本文主要基于window系统以及Hexo3版本，其他系统除了软件的安装方式和命令有些差异，其他基本一样。一般hexo都是托管在github上，但是毕竟github是国外的网站，访问速度上还是有点慢，所以就将博客部署在国内的托管平台coding上。<br> <a id="more"></a></p>
+<h2 id="前置步骤"><a href="#前置步骤" class="headerlink" title="前置步骤"></a>前置步骤</h2><p> 所需软件:</p>
+</blockquote>
+<ul>
+<li><a href="!https://nodejs.org/en/">node.js</a> :因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要node.js来创建Hexo博客框架。<ul>
+<li><a href="!https://git-scm.com/">git</a> :将本地的Hexo内容提交至git中</li>
+</ul>
+</li>
+</ul>
+<p>如果已经安装好了上述必备程序，那么接下来只需要使用npm命令完成hexo的安装。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo -cli</span><br></pre></td></tr></table></figure></p>
+<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p> 接下来我们需要用Hexo初始化一个博客，然后更改一些自定义的配置，或者加上自己喜欢的主题，写上第一篇文章，然后发布到自己的个人coding网站(userName.coding.me)。</p>
+<h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p> 将下面的userName替换成你自己的昵称，执行成功后会在指定文件夹中新建所需要的文件。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init userName.coding.me</span><br></pre></td></tr></table></figure></p>
+<p> 新建完成后，指定文件夹目录如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br><span class="line">|   └── landscape</span><br></pre></td></tr></table></figure></p>
+<p> 为了使博客更加美观，我们为博客安装一个双栏博客主题，切换至刚刚生成的hexo目录<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd userName.coding.me</span><br></pre></td></tr></table></figure></p>
+<p> 安装Hexo主题yelee<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/MOxFIVE/hexo-theme-yelee.git themes/yelee</span><br></pre></td></tr></table></figure></p>
+<p> 执行完毕后会看到主题已经安装到对应目录，再修改Hexo根目录对应配置文件_config.yml，即可切换到Yelee主题<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: Yelee</span><br></pre></td></tr></table></figure></p>
+<p> 执行以下命令预览当前主题,测试服务启动，你可以在浏览器中输入<a href="https://localhost:4000" target="_blank" rel="external">https://localhost:4000</a> 进行访问了。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></p>
+<p> 主题配置文件在userName.coding.me/themes/yelee/_comfig.yml中修改，本文略过，具体可查看 <a href="!http://moxfive.coding.me/yelee/">主题配置文档</a> 。</p>
+<h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><p> 在<a href="!https://coding.net/register">Coding</a>上进行注册，然后在Coding上创建一个项目，在本地浏览自己的博客没问题后，我们就需要把博客部署到到Coding上，现在根目录下找到_config.yml文件，并进入编辑。我们找到deploy这项，具体修改如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  #我们是使用 git 来部署的。</span><br><span class="line">  type: git</span><br><span class="line">  # git 仓库的地址,userName为coding的用户名，projectName为创建的项目名称</span><br><span class="line">  repo: https://git.coding.net/userName/projectName.git</span><br><span class="line">  #分支名称</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p> <strong>注意事项：</strong>修改配置文件时，必须严格按照特定的格式，必须是这个格式，type，repo，branch前两个空格，“：”后面一个空格。<br> 按照上面的修改好_config.yml配置文件过后，还需要安装自动部署发布工具(hexo-deployer-git)才能够使用部署命令将博客部署到<a href="!https://coding.net">Coding</a>上。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p> 执行config命令配置用户名和邮箱：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config -–global user.name &quot;xxx&quot;</span><br><span class="line">git config –-global user.email &quot;xxx@xxx.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p> 测试没问题后，就可以使用如下命令将生成的静态网页文件发布到Coding上：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<p> 把代码push到Coding上之前，终端会让你输入邮箱和密码，正确输入后，稍等片刻，就会将博客上传至Coding上。以后每次博客有更新，都可以使用该条命令进行发布。</p>
+<h3 id="Pages演示"><a href="#Pages演示" class="headerlink" title="Pages演示"></a>Pages演示</h3><p> 为了能够访问博客，我们需要将博客托管到<a href="!https://coding.net/help/doc/pages/index.html">Coding Pages</a>上,首先在本地创建一个Readme.md的文件说明，将项目文件夹初始化为Git版本库并提交Readme.md到版本库，并未项目添加远程仓库地址<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add  Readme.md</span><br><span class="line">git commit -m &apos;init&apos;</span><br><span class="line">git remote add origin git@git.coding.net:&#123;user_name&#125;/&#123;project_name&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 在本地创建一个 coding-pages 分支，切换到该分支<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b coding-pages</span><br></pre></td></tr></table></figure></p>
+<p> 将 coding-pages 分支推送到 Coding.net<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  push origin coding-pages</span><br></pre></td></tr></table></figure></p>
+<p> 进入私有项目页面，点击左侧栏的 <code>代码</code> 面板 ，选择 <code>Pages 服务</code> 一项可以看到部署 Pages 的设置。（公开项目点击 Pages 选项卡即可），填写您欲部署的分支（默认为 <code>coding-pages</code> ），点击 <code>立即开启</code> ，稍等片刻即可完成部署并通过 {user_name}.coding.me 访问您的网站。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JDBC入门]]></title>
-      <url>http://flwcy.coding.me/2016/06/30/start_jdbc/</url>
+      <url>http://flwcy.coding.me/2016/06/30/start-jdbc/</url>
       <content type="html"><![CDATA[<p>了解jdbc的基本概念并编写相应的jdbc代码<br><a id="more"></a></p>
 <h3 id="一-初识JDBC"><a href="#一-初识JDBC" class="headerlink" title="(一) 初识JDBC"></a><strong>(一) 初识JDBC</strong></h3><h4 id="jdbc的概念"><a href="#jdbc的概念" class="headerlink" title="jdbc的概念"></a><strong>jdbc的概念</strong></h4><pre><code>jdbc:java data base connectivity
 jdbc由一些接口和类构成的api，是javaSE的一部分，位于java.sql以及javax.sql包下。
