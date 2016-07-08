@@ -7,14 +7,12 @@
       <title><![CDATA[hexo搭建个人博客]]></title>
       <url>http://flwcy.coding.me/2016/07/05/build-personal-blog/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>本文主要基于window系统以及Hexo3版本，其他系统除了软件的安装方式和命令有些差异，其他基本一样。一般hexo都是托管在github上，但是毕竟github是国外的网站，访问速度上还是有点慢，所以就将博客部署在国内的托管平台coding上。<br> <a id="more"></a></p>
+<p>本文主要基于window系统以及Hexo3版本，其他系统除了软件的安装方式和命令有些差异，其他基本一样。一般hexo都是托管在github上，但是毕竟github是国外的网站，访问速度上还是有点慢，所以就将博客部署在国内的托管平台coding上。<br><a id="more"></a></p>
 <h2 id="前置步骤"><a href="#前置步骤" class="headerlink" title="前置步骤"></a>前置步骤</h2><p> 所需软件:</p>
 </blockquote>
 <ul>
-<li><a href="!https://nodejs.org/en/">node.js</a> :因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要node.js来创建Hexo博客框架。<ul>
+<li><a href="!https://nodejs.org/en/">node.js</a> :因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要node.js来创建Hexo博客框架。</li>
 <li><a href="!https://git-scm.com/">git</a> :将本地的Hexo内容提交至git中</li>
-</ul>
-</li>
 </ul>
 <p>如果已经安装好了上述必备程序，那么接下来只需要使用npm命令完成hexo的安装。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo -cli</span><br></pre></td></tr></table></figure></p>
 <h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p> 接下来我们需要用Hexo初始化一个博客，然后更改一些自定义的配置，或者加上自己喜欢的主题，写上第一篇文章，然后发布到自己的个人coding网站(userName.coding.me)。</p>
