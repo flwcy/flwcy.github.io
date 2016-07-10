@@ -69,9 +69,9 @@ sun公司提供了这些连接数据库的规范，由数据库的生产厂商�
     <entry>
       <title><![CDATA[Hello 个人博客]]></title>
       <url>http://flwcy.coding.me/2016/06/28/hello-world/</url>
-      <content type="html"><![CDATA[<p>之前在跟同学聊天时听他说起搭建<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>个人静态博客，在<a href="https://kyleljj.github.io/" target="_blank" rel="external">lujj</a>的劝诱下，花了几天的时间搭建了自己的个人博客。</p>
+      <content type="html"><![CDATA[<p>之前在跟同学聊天时听他说起搭建<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>个人静态博客，总是觉得弄个人博客是一个非常麻烦的事情，在<a href="https://kyleljj.github.io/" target="_blank" rel="external">lujj</a>的劝诱下，花了几天的时间搭建了自己的个人博客。</p>
 <a id="more"></a>
-<h3 id="开博缘由"><a href="#开博缘由" class="headerlink" title="开博缘由"></a>开博缘由</h3><p>之前自己也在csdn上写博客，大部分都是自己学习过程中的总结，方便自己复习，之所以搭建个人博客，大体是如下几点原因吧！</p>
+<h3 id="开博缘由"><a href="#开博缘由" class="headerlink" title="开博缘由"></a>开博缘由</h3><p>之前自己也在csdn上写过博客，大部分都是自己学习过程中的总结，方便自己复习，之所以搭建个人博客，大体是如下几点原因吧！</p>
 <ul>
 <li>独立/简洁/自由:不想其他网站上的博客一样，广告或者推广消息漫天飞舞！</li>
 <li>记录：记录自己的学习轨迹，便于时常复习，在写博客的时间能够进行知识点的总结。</li>
