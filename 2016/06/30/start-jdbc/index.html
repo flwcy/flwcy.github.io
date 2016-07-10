@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://flwcy.coding.me/2016/06/30/start-jdbc/index.html">
 <meta property="og:site_name" content="flwcy's blog">
 <meta property="og:description" content="什么是JDBC?Java语言访问数据库的一种规范,是一套API。JDBC (Java Database Connectivity) API，即Java数据库编程接口，是一组标准的Java语言中的接口和类，使用这些接口和类，Java客户端程序可以访问各种不同类型的数据库。比如建立数据库连接、执行SQL语句进行数据的存取操作。">
-<meta property="og:image" content="http://img.blog.csdn.net/20160320224213419">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_start_01.jpg">
 <meta property="og:image" content="http://img.blog.csdn.net/20160320235726656">
 <meta property="og:image" content="http://img.blog.csdn.net/20160321003904486">
 <meta property="og:image" content="http://img.blog.csdn.net/20160321230615961">
@@ -29,11 +29,11 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20160323001902848">
 <meta property="og:image" content="http://img.blog.csdn.net/20160323002038816">
 <meta property="og:image" content="http://img.blog.csdn.net/20160323002240694">
-<meta property="og:updated_time" content="2016-07-07T17:40:44.915Z">
+<meta property="og:updated_time" content="2016-07-10T09:38:34.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC入门">
 <meta name="twitter:description" content="什么是JDBC?Java语言访问数据库的一种规范,是一套API。JDBC (Java Database Connectivity) API，即Java数据库编程接口，是一组标准的Java语言中的接口和类，使用这些接口和类，Java客户端程序可以访问各种不同类型的数据库。比如建立数据库连接、执行SQL语句进行数据的存取操作。">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160320224213419">
+<meta name="twitter:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_start_01.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -350,7 +350,7 @@
 <h3 id="一-初识JDBC"><a href="#一-初识JDBC" class="headerlink" title="(一) 初识JDBC"></a><strong>(一) 初识JDBC</strong></h3><h4 id="jdbc的概念"><a href="#jdbc的概念" class="headerlink" title="jdbc的概念"></a><strong>jdbc的概念</strong></h4><pre><code>jdbc:java data base connectivity
 jdbc由一些接口和类构成的api，是javaSE的一部分，位于java.sql以及javax.sql包下。
 sun公司提供了这些连接数据库的规范，由数据库的生产厂商提供驱动程序。
-</code></pre><p><img src="http://img.blog.csdn.net/20160320224213419" alt="jdbc关系图"></p>
+</code></pre><p><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_start_01.jpg" alt="jdbc关系图"></p>
 <h4 id="数据库连接的基本步骤"><a href="#数据库连接的基本步骤" class="headerlink" title="数据库连接的基本步骤"></a><strong>数据库连接的基本步骤</strong></h4><p>1、注册数据库驱动(Driver)<br>2、建立连接(Connection)<br>3、创建执行sql语句(一般是Statement及其子类)<br>4、执行sql语句获得结果集(ResultSet)<br>5、处理执行结果（在非查询语句中，该步骤可以省略）<br>6、关闭连接，释放资源</p>
 <h4 id="Talk-is-cheap-Show-me-the-code"><a href="#Talk-is-cheap-Show-me-the-code" class="headerlink" title="Talk is cheap.Show me the code"></a><strong>Talk is cheap.Show me the code</strong></h4><p>首先进行一些准备工作，创建表，本bolg是在mysql新建的db_jdbc库中创建了表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> db_user(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">    user_name <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">    <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">32</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">    email <span class="built_in">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    birthday <span class="built_in">DATE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>为了方便，先插入两条测试数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> db_user(<span class="keyword">id</span>,user_name,<span class="string">`password`</span>,email,birthday) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">"jjr"</span> ,<span class="string">"jjr123"</span> ,<span class="string">"jjr123@126.net"</span> ,<span class="string">"1991-09-08"</span> );</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> db_user(<span class="keyword">id</span>,user_name,<span class="string">`password`</span>,email,birthday) <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">"js123"</span> ,<span class="string">"123456"</span> ,<span class="string">"js123@126.net"</span> ,<span class="string">"1991-09-08"</span> )</span><br></pre></td></tr></table></figure></p>
@@ -382,7 +382,7 @@ sun公司提供了这些连接数据库的规范，由数据库的生产厂商�
         <p><span>本文标题:</span><a href="/2016/06/30/start-jdbc/">JDBC入门</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">flwcy</a></p>
         <p><span>发布时间:</span>2016-06-30, 01:55:05</p>
-        <p><span>最后更新:</span>2016-07-08, 01:40:44</p>
+        <p><span>最后更新:</span>2016-07-10, 17:38:34</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/06/30/start-jdbc/" title="JDBC入门">http://flwcy.coding.me/2016/06/30/start-jdbc/</a>
             <span class="copy-path" data-clipboard-text="原文: http://flwcy.coding.me/2016/06/30/start-jdbc/　　作者: flwcy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
