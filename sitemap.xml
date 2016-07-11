@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
+    
+    <lastmod>2016-07-11T17:50:54.491Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://flwcy.coding.me/2016/07/11/markdown_syntax/</loc>
     
     <lastmod>2016-07-11T16:35:53.210Z</lastmod>
@@ -23,7 +30,7 @@
   </url>
   
   <url>
-    <loc>http://flwcy.coding.me/2016/06/30/start-jdbc/</loc>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
     
     <lastmod>2016-07-10T09:38:34.122Z</lastmod>
     
