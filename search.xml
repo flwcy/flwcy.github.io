@@ -36,7 +36,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">any_value’ or ‘1’ = ‘1’;show tables – rooike</td>
+<td style="text-align:center">any_value’ or ‘1’ = ‘1’;show tables --rooike</td>
 <td style="text-align:center">any_value</td>
 </tr>
 </tbody>
