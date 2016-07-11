@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://flwcy.coding.me/2016/07/11/markdown_syntax/</loc>
+    
+    <lastmod>2016-07-11T16:35:53.210Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://flwcy.coding.me/2016/07/05/build-personal-blog/</loc>
+    
+    <lastmod>2016-07-11T16:20:58.064Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
     
     <lastmod>2016-07-10T17:02:24.547Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://flwcy.coding.me/2016/06/30/start-jdbc/</loc>
     
     <lastmod>2016-07-10T09:38:34.122Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://flwcy.coding.me/2016/07/05/build-personal-blog/</loc>
-    
-    <lastmod>2016-07-08T13:11:47.497Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://flwcy.coding.me/tags/index.html</loc>
     
     <lastmod>2016-06-29T15:36:23.223Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://flwcy.coding.me/categories/index.html</loc>
-    
-    <lastmod>2016-06-28T16:54:25.700Z</lastmod>
     
   </url>
   

@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/07/11/markdown_syntax/</loc>
+    <lastmod>2016-07-11T16:35:53.210Z</lastmod>
+    <data>
+        <display>
+        <title>markdown语法说明</title>
+        <pubTime>2016-07-11T06:01:12.000Z</pubTime>
+        
+        <tag>markdown</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://flwcy.coding.me/2016/07/05/build-personal-blog/</loc>
+    <lastmod>2016-07-11T16:20:58.064Z</lastmod>
+    <data>
+        <display>
+        <title>hexo搭建个人博客</title>
+        <pubTime>2016-07-05T15:32:12.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
     <lastmod>2016-07-10T17:02:24.547Z</lastmod>
     <data>
@@ -42,27 +82,6 @@
     </data>
     </url>
 
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/07/05/build-personal-blog/</loc>
-    <lastmod>2016-07-08T13:11:47.497Z</lastmod>
-    <data>
-        <display>
-        <title>hexo搭建个人博客</title>
-        <pubTime>2016-07-05T15:32:12.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
     
     
     
