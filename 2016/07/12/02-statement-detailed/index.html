@@ -451,21 +451,27 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Statement详解"><span class="toc-number">1.</span> <span class="toc-text">Statement详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRUD操作"><span class="toc-number">2.</span> <span class="toc-text">CRUD操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新增数据的方法"><span class="toc-number">2.1.</span> <span class="toc-text">1.新增数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-读取数据的方法"><span class="toc-number">2.2.</span> <span class="toc-text">2.读取数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-修改数据的方法"><span class="toc-number">2.3.</span> <span class="toc-text">3.修改数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-删除数据的方法"><span class="toc-number">2.4.</span> <span class="toc-text">4.删除数据的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数化查询"><span class="toc-number">3.</span> <span class="toc-text">参数化查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statement的SQL注入问题"><span class="toc-number">4.</span> <span class="toc-text">Statement的SQL注入问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预处理语句"><span class="toc-number">5.</span> <span class="toc-text">预处理语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PreparedStatement的局限性"><span class="toc-number">6.</span> <span class="toc-text">PreparedStatement的局限性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#More-Read"><span class="toc-number">7.</span> <span class="toc-text">More Read</span></a></li></ol>
-</div>
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Statement详解"><span class="toc-number">1.</span> <span class="toc-text">Statement详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CRUD操作"><span class="toc-number">2.</span> <span class="toc-text">CRUD操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新增数据的方法"><span class="toc-number">2.1.</span> <span class="toc-text">1.新增数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-读取数据的方法"><span class="toc-number">2.2.</span> <span class="toc-text">2.读取数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-修改数据的方法"><span class="toc-number">2.3.</span> <span class="toc-text">3.修改数据的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-删除数据的方法"><span class="toc-number">2.4.</span> <span class="toc-text">4.删除数据的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数化查询"><span class="toc-number">3.</span> <span class="toc-text">参数化查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statement的SQL注入问题"><span class="toc-number">4.</span> <span class="toc-text">Statement的SQL注入问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预处理语句"><span class="toc-number">5.</span> <span class="toc-text">预处理语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PreparedStatement的局限性"><span class="toc-number">6.</span> <span class="toc-text">PreparedStatement的局限性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#More-Read"><span class="toc-number">7.</span> <span class="toc-text">More Read</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+	<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-<script>
-    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
-</script>
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
 
 
 

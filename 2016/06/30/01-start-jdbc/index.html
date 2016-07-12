@@ -416,21 +416,27 @@ sun公司提供了这些连接数据库的规范，由数据库的生产厂商�
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-初识JDBC"><span class="toc-number">1.</span> <span class="toc-text">(一) 初识JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jdbc的概念"><span class="toc-number">1.1.</span> <span class="toc-text">jdbc的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库连接的基本步骤"><span class="toc-number">1.2.</span> <span class="toc-text">数据库连接的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Talk-is-cheap-Show-me-the-code"><span class="toc-number">1.3.</span> <span class="toc-text">Talk is cheap.Show me the code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码详解"><span class="toc-number">1.4.</span> <span class="toc-text">代码详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注册驱动的三种方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">注册驱动的三种方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取数据库连接"><span class="toc-number">1.4.2.</span> <span class="toc-text">获取数据库连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码优化"><span class="toc-number">1.4.3.</span> <span class="toc-text">代码优化</span></a></li></ol></li></ol></li></ol>
-</div>
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-初识JDBC"><span class="toc-number">1.</span> <span class="toc-text">(一) 初识JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jdbc的概念"><span class="toc-number">1.1.</span> <span class="toc-text">jdbc的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库连接的基本步骤"><span class="toc-number">1.2.</span> <span class="toc-text">数据库连接的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Talk-is-cheap-Show-me-the-code"><span class="toc-number">1.3.</span> <span class="toc-text">Talk is cheap.Show me the code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码详解"><span class="toc-number">1.4.</span> <span class="toc-text">代码详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注册驱动的三种方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">注册驱动的三种方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取数据库连接"><span class="toc-number">1.4.2.</span> <span class="toc-text">获取数据库连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码优化"><span class="toc-number">1.4.3.</span> <span class="toc-text">代码优化</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+	<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-<script>
-    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
-</script>
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
 
 
 
