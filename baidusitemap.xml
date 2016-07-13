@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
-    <lastmod>2016-07-13T14:19:47.609Z</lastmod>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
+    <lastmod>2016-07-13T15:28:22.787Z</lastmod>
     <data>
         <display>
-        <title>Statement以及PreparedStatement</title>
-        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
+        <title>JDBC入门</title>
+        <pubTime>2016-06-29T17:55:05.673Z</pubTime>
         
         <tag>jdbc</tag>
          
@@ -24,12 +24,12 @@
 
     
   <url>
-    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-13T14:17:23.775Z</lastmod>
+    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
+    <lastmod>2016-07-13T14:19:47.609Z</lastmod>
     <data>
         <display>
-        <title>JDBC入门</title>
-        <pubTime>2016-06-29T17:55:05.673Z</pubTime>
+        <title>Statement以及PreparedStatement</title>
+        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
         
         <tag>jdbc</tag>
          
