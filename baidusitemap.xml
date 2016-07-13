@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
+    <lastmod>2016-07-13T14:19:47.609Z</lastmod>
+    <data>
+        <display>
+        <title>Statement以及PreparedStatement</title>
+        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
+    <lastmod>2016-07-13T14:17:23.775Z</lastmod>
+    <data>
+        <display>
+        <title>JDBC入门</title>
+        <pubTime>2016-06-29T17:55:05.673Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
+    <lastmod>2016-07-13T14:03:26.891Z</lastmod>
+    <data>
+        <display>
+        <title>Hello 个人博客</title>
+        <pubTime>2016-06-28T12:35:55.442Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔生活" url="http://flwcy.coding.me/categories/%E9%9A%8F%E7%AC%94%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/07/11/markdown_syntax/</loc>
     <lastmod>2016-07-12T15:58:53.642Z</lastmod>
     <data>
@@ -24,26 +84,6 @@
 
     
   <url>
-    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
-    <lastmod>2016-07-11T17:56:02.958Z</lastmod>
-    <data>
-        <display>
-        <title>Statement以及PreparedStatement</title>
-        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://flwcy.coding.me/2016/07/05/build-personal-blog/</loc>
     <lastmod>2016-07-11T16:20:58.064Z</lastmod>
     <data>
@@ -52,46 +92,6 @@
         <pubTime>2016-07-05T15:32:12.000Z</pubTime>
         
         <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
-    <lastmod>2016-07-10T17:02:24.547Z</lastmod>
-    <data>
-        <display>
-        <title>Hello 个人博客</title>
-        <pubTime>2016-06-28T12:35:55.442Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="随笔生活" url="http://flwcy.coding.me/categories/%E9%9A%8F%E7%AC%94%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-10T09:38:34.122Z</lastmod>
-    <data>
-        <display>
-        <title>JDBC入门</title>
-        <pubTime>2016-06-29T17:55:05.673Z</pubTime>
-        
-        <tag>jdbc</tag>
          
          
            
