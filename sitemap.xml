@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
+    <loc>http://flwcy.coding.me/2016/07/15/singleton-pattern/</loc>
     
-    <lastmod>2016-07-14T15:02:01.165Z</lastmod>
+    <lastmod>2016-07-15T13:22:05.643Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
     
-    <lastmod>2016-07-13T15:28:22.787Z</lastmod>
+    <lastmod>2016-07-15T13:11:47.714Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
+    
+    <lastmod>2016-07-14T15:02:01.165Z</lastmod>
     
   </url>
   

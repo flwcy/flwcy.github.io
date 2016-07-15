@@ -4,6 +4,49 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/07/15/singleton-pattern/</loc>
+    <lastmod>2016-07-15T13:22:05.643Z</lastmod>
+    <data>
+        <display>
+        <title>如何正确地写出单例模式</title>
+        <pubTime>2016-07-15T11:55:07.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="转载" url="http://flwcy.coding.me/categories/%E8%BD%AC%E8%BD%BD/"/>
+          
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
+    <lastmod>2016-07-15T13:11:47.714Z</lastmod>
+    <data>
+        <display>
+        <title>JDBC入门</title>
+        <pubTime>2016-06-30T11:55:07.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
     <lastmod>2016-07-14T15:02:01.165Z</lastmod>
     <data>
@@ -17,26 +60,6 @@
            
              
               <breadCrumb title="随笔生活" url="http://flwcy.coding.me/categories/%E9%9A%8F%E7%AC%94%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-13T15:28:22.787Z</lastmod>
-    <data>
-        <display>
-        <title>JDBC入门</title>
-        <pubTime>2016-06-29T17:55:05.673Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
           
         </display>
     </data>
