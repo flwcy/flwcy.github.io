@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[如何正确地写出单例模式]]></title>
       <url>http://flwcy.coding.me/2016/07/15/singleton-pattern/</url>
-      <content type="html"><![CDATA[<p>作者： <a href="http://wuchong.me/" target="_blank" rel="external">Jark</a><br>出处：<a href="http://hawstein.com/posts/dp-novice-to-advanced.html" target="_blank" rel="external">http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/</a><br>声明：本文采用以下协议进行授权： <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="external">知识共享 署名-非商业-相同方式分享 4.0 国际 授权条款</a>，转载请注明作者及出处。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>作者： <a href="http://wuchong.me/" target="_blank" rel="external">Jark</a><br>出处：<a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/</a><br>声明：本文采用以下协议进行授权： <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="external">知识共享 署名-非商业-相同方式分享 4.0 国际 授权条款</a>，转载请注明作者及出处。<br><a id="more"></a></p>
 <hr>
 <p>单例模式算是设计模式中最容易理解，也是最容易手写代码的模式了吧。但是其中的坑却不少，所以也常作为面试题来考。本文主要对几种单例写法的整理，并分析其优缺点。很多都是一些老生常谈的问题，但如果你不知道如何创建一个线程安全的单例，不知道什么是双检锁，那这篇文章可能会帮助到你。</p>
 <h2 id="懒汉式，线程不安全"><a href="#懒汉式，线程不安全" class="headerlink" title="懒汉式，线程不安全"></a>懒汉式，线程不安全</h2><p>当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教科书上也是这样教我们的。</p>
