@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://flwcy.coding.me/2016/07/12/02-statement-detailed/index.html">
 <meta property="og:site_name" content="flwcy's blog">
 <meta property="og:description" content="PreparedStatement是用来执行SQL查询语句的API之一，Java提供了 Statement、PreparedStatement 和 CallableStatement三种方式来执行查询语句，其中 Statement 用于通用查询， PreparedStatement 用于执行参数化查询，而 CallableStatement则是用于存储过程。同时PreparedStatement还">
-<meta property="og:updated_time" content="2016-07-13T14:19:47.609Z">
+<meta property="og:updated_time" content="2016-07-17T16:48:32.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Statement以及PreparedStatement">
 <meta name="twitter:description" content="PreparedStatement是用来执行SQL查询语句的API之一，Java提供了 Statement、PreparedStatement 和 CallableStatement三种方式来执行查询语句，其中 Statement 用于通用查询， PreparedStatement 用于执行参数化查询，而 CallableStatement则是用于存储过程。同时PreparedStatement还">
@@ -406,7 +406,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SELECT * FROM db_user WHERE user_name IN (?)"</span>;</span><br><span class="line">preparedSatement.setString(<span class="number">1</span>, <span class="string">"'jjr123', 'rooike', 'js123'"</span>);</span><br></pre></td></tr></table></figure>
 <p>简单总结一下PreparedStatement的优点:</p>
 <ul>
-<li>PreparedStatement可以阻止常见的SQL注入式攻击。</li>
+<li>PreparedStatement可以阻止常见的SQL注入式攻击，因为它会自动对特殊字符转义。</li>
 <li>PreparedStatement可以写参数化查询，比起凌乱的字符串追加似的查询，PreparedStatement查询可读性更好、更安全.</li>
 <li>对于PreparedStatement来说，数据库可以使用已经编译过及定义好的执行计划，这种预处理语句查询比普通的查询运行速度更快(Statement总是在执行时发送sql，影响效率.同样的sql，每次都要发送，不能进行有效的缓存，是一种资源的浪费)</li>
 </ul>
@@ -423,10 +423,10 @@
     
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2016/07/12/02-statement-detailed/">Statement以及PreparedStatement</a></p>
-		<p><span>本文字数:</span>5,329 字</</p>
+		<p><span>本文字数:</span>5,342 字</</p>
         <p><span>文章作者:</span><a href="/" title="回到主页">flwcy</a></p>
         <p><span>发布时间:</span>2016-07-12, 01:17:49</p>
-        <p><span>最后更新:</span>2016-07-13, 22:19:47</p>
+        <p><span>最后更新:</span>2016-07-18, 00:48:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/12/02-statement-detailed/" title="Statement以及PreparedStatement">http://flwcy.coding.me/2016/07/12/02-statement-detailed/</a>
             <span class="copy-path" data-clipboard-text="原文: http://flwcy.coding.me/2016/07/12/02-statement-detailed/　　作者: flwcy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

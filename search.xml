@@ -113,7 +113,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SELECT * FROM db_user WHERE user_name IN (?)"</span>;</span><br><span class="line">preparedSatement.setString(<span class="number">1</span>, <span class="string">"'jjr123', 'rooike', 'js123'"</span>);</span><br></pre></td></tr></table></figure>
 <p>简单总结一下PreparedStatement的优点:</p>
 <ul>
-<li>PreparedStatement可以阻止常见的SQL注入式攻击。</li>
+<li>PreparedStatement可以阻止常见的SQL注入式攻击，因为它会自动对特殊字符转义。</li>
 <li>PreparedStatement可以写参数化查询，比起凌乱的字符串追加似的查询，PreparedStatement查询可读性更好、更安全.</li>
 <li>对于PreparedStatement来说，数据库可以使用已经编译过及定义好的执行计划，这种预处理语句查询比普通的查询运行速度更快(Statement总是在执行时发送sql，影响效率.同样的sql，每次都要发送，不能进行有效的缓存，是一种资源的浪费)</li>
 </ul>

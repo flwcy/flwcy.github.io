@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
+    <lastmod>2016-07-17T16:48:32.275Z</lastmod>
+    <data>
+        <display>
+        <title>Statement以及PreparedStatement</title>
+        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-17T14:43:20.007Z</lastmod>
+    <lastmod>2016-07-17T16:44:31.443Z</lastmod>
     <data>
         <display>
         <title>JDBC入门</title>
@@ -60,26 +80,6 @@
            
              
               <breadCrumb title="随笔生活" url="http://flwcy.coding.me/categories/%E9%9A%8F%E7%AC%94%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
-    <lastmod>2016-07-13T14:19:47.609Z</lastmod>
-    <data>
-        <display>
-        <title>Statement以及PreparedStatement</title>
-        <pubTime>2016-07-11T17:17:49.000Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
           
         </display>
     </data>
