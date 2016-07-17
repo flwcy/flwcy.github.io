@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
+    <lastmod>2016-07-17T14:18:39.604Z</lastmod>
+    <data>
+        <display>
+        <title>JDBC入门</title>
+        <pubTime>2016-06-30T11:55:07.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/07/15/singleton-pattern/</loc>
     <lastmod>2016-07-15T13:40:22.160Z</lastmod>
     <data>
@@ -20,26 +40,6 @@
           
              
               <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-15T13:11:47.714Z</lastmod>
-    <data>
-        <display>
-        <title>JDBC入门</title>
-        <pubTime>2016-06-30T11:55:07.000Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
           
         </display>
     </data>
