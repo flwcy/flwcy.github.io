@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/</loc>
+    
+    <lastmod>2016-07-17T17:07:08.909Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
     
     <lastmod>2016-07-17T16:48:32.275Z</lastmod>

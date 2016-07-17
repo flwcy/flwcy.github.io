@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="flwcy" />
+
+
+
+<meta name="description" content="由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC数据类型详解">
+<meta property="og:url" content="http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/index.html">
+<meta property="og:site_name" content="flwcy's blog">
+<meta property="og:description" content="由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_01.jpg">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_02.jpg">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_03.jpg">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_04.jpg">
+<meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_05.jpg">
+<meta property="og:updated_time" content="2016-07-17T17:07:08.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JDBC数据类型详解">
+<meta name="twitter:description" content="由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。">
+<meta name="twitter:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_01.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="flwcy&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>JDBC数据类型详解 | flwcy&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+<script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = "(つェ⊂)我藏好了哦~ " + OriginTitile;
+            clearTimeout(titleTime);
+        }
+        else {
+            document.title = "(*´∇｀*) 被你发现啦~ " + OriginTitile;
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">flwcy</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">越努力，越幸运！！！</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:flwcy91@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://www.weibo.com/u/1766287264" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/flwcy" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="http://www.zhihu.com/people/rookie_jiang" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://kyleljj.github.io">lujj&#39;s blog</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.netcan666.com/">Netcan</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">与80后一起长大的90后，职业coder，想法挺多，成就没有，喜欢NBA，爱玩游戏。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">flwcy</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">flwcy</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">越努力，越幸运！！！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:flwcy91@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://www.weibo.com/u/1766287264" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/flwcy" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="http://www.zhihu.com/people/rookie_jiang" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-03-jdbc-data-detailed" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/18/03-jdbc-data-detailed/" class="article-date">
+      <time datetime="2016-07-17T16:52:13.000Z" itemprop="datePublished">2016-07-18</time>
+</a>
+
+ 
+    <a href="/2016/07/18/03-jdbc-data-detailed/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count" ></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JDBC数据类型详解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术札记/">技术札记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。</p>
+<a id="more"></a>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>JDBC中提供了我们所能见到的所有数据类型，其中像String、int等等，赋值使用的是PreparedStatement中的setter方法(类似setShot、setString等等)，取值使用的是ResultSet中的getter方法(类似getInt、getLong等等)可以查看Preparedstatement的API文档<br><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_01.jpg" alt="API文档"><br>其中如果不知道数据表中数据类型或者不能确定是什么类型的情况下，可以直接使用setObject方法和getObject方法进行获取和设置.</p>
+<h2 id="日期类型"><a href="#日期类型" class="headerlink" title="日期类型"></a>日期类型</h2><p>其中日期类型是比较特殊的一个类型，我们看一下ResultSet的getDate方法<br><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_02.jpg" alt="getDate"></p>
+<blockquote>
+<p>以Java编程语言中的java.sql.Date对象形式获取此ResultSet对象的当前行中指定列的值。<br>参数:<br>columnIndex  第一个列是1，第二个列是2，……<br>返回：<br>列值;如果值为SQL NULL，则返回值为null</p>
+</blockquote>
+<p>其中返回值Date类型是java.sql.Date类型。<br><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_03.jpg" alt="java.sql.Date"></p>
+<ul>
+<li>java.sql.Date是java.util.Date的子类</li>
+</ul>
+<p>基本上一般的数据库都支持三种形式的datetime字段(date/time/timestamp),每一种数据库的datetime字段在JDBC中都有与之对应的类，这些类都继承自java.util.Date.</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/sql/Date.html" target="_blank" rel="external">java.sql.Date</a>对应于SQL DATE，这意味着它存储了年、月和天，而小时、分钟、秒和毫秒均被忽略。此外sql.Date不依赖时区.</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/sql/Time.html" target="_blank" rel="external">java.sql.Time</a>对应于SQL TIME，应该是显而易见的仅包含了小时、分钟、秒和毫秒这些信息.</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/sql/Timestamp.html" target="_blank" rel="external">java.sql.Timestamp</a>对应于SQL TIMESTAMP，这是精确到纳秒的确切日期(请注意java.util.Date仅支持到毫秒),可以自定义精度.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sqlDateTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        <span class="comment">//新增记录 java.sql.date java.sql.Time java.sql.Timestamp</span></span><br><span class="line">        String sql = <span class="string">"insert into db_date_test(sql_date,sql_time,sql_timestamp) VALUES(?,?,?)"</span>;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line"></span><br><span class="line">        java.sql.Date sqlDate = <span class="keyword">new</span> java.sql.Date(System.currentTimeMillis());</span><br><span class="line">        java.sql.Time sqlTime = <span class="keyword">new</span> Time(System.currentTimeMillis());</span><br><span class="line">        java.sql.Timestamp timestamp = <span class="keyword">new</span> Timestamp(System.currentTimeMillis());</span><br><span class="line"></span><br><span class="line">        preparedStatement.setDate(<span class="number">1</span>,sqlDate);</span><br><span class="line">        preparedStatement.setTime(<span class="number">2</span>,sqlTime);</span><br><span class="line">        preparedStatement.setTimestamp(<span class="number">3</span>,timestamp);</span><br><span class="line"></span><br><span class="line">        preparedStatement.executeUpdate();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        JdbcUtils.close(<span class="keyword">null</span>, preparedStatement, connection);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查询数据库查看结果:<br><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_04.jpg" alt="结果"><br>至于java.sql.Date与java.util.Date两者之间的转换，有一个很简单的方法。<br>因为两者都提供了一个long型的构造函数，两者通过getTime重新构造一下就行了。<br>即： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java.util.Date date1 = ...; </span><br><span class="line">java.sql.Date date2 = ...; </span><br><span class="line"></span><br><span class="line">date1 = <span class="keyword">new</span> java.sql.Date(date2.getTime()); </span><br><span class="line">date2 = <span class="keyword">new</span> java.util.Date(date1.getTime());</span><br></pre></td></tr></table></figure>
+<p>在数据库时间建模和操作时习惯用java.sql.Timestamp，与数据库中DateTime对应，但业务流通层，还是习惯只用java.util.Date，因为这些时间直接的转换都是一样的方便，而且这样做逻辑理解上比较直观。<br>修改数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> id,java.util.Date date)</span></span>&#123;</span><br><span class="line">    Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> result = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        <span class="comment">//新增记录 java.sql.date java.sql.Time java.sql.Timestamp</span></span><br><span class="line">        String sql = <span class="string">"update db_date_test set sql_timestamp=? where id=?"</span>;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line"></span><br><span class="line">        preparedStatement.setTimestamp(<span class="number">1</span>, <span class="keyword">new</span> java.sql.Timestamp(date.getTime()));</span><br><span class="line">        preparedStatement.setInt(<span class="number">2</span>,id);</span><br><span class="line">        result = preparedStatement.executeUpdate();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        JdbcUtils.close(<span class="keyword">null</span>, preparedStatement, connection);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查询数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> java.util.<span class="function">Date <span class="title">read</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    Date date = <span class="keyword">null</span>;</span><br><span class="line">    Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">    ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        <span class="comment">//新增记录 java.sql.date java.sql.Time java.sql.Timestamp</span></span><br><span class="line">        String sql = <span class="string">"select sql_timestamp from db_date_test where id=?"</span>;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line"></span><br><span class="line">        preparedStatement.setInt(<span class="number">1</span>,id);</span><br><span class="line">        resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">            <span class="comment">//Timestamp是java.util.Date的子类</span></span><br><span class="line">            date = resultSet.getTimestamp(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        JdbcUtils.close(<span class="keyword">null</span>, preparedStatement, connection);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CLOB类型"><a href="#CLOB类型" class="headerlink" title="CLOB类型"></a>CLOB类型</h2><p>当我们存储大量的文本信息时，数据库中的varchar或者varchar2肯定是不能满足的，varchar2最多只能有4000个长度，当我们需要存放一篇文章或者一个文本信息时，可以使用CLOB类型来满足我们的需求。在MySQL数据库中CLOB类型对应的是Text，DB2/Oracle中clob对应clob。</p>
+<ul>
+<li>创建数据表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`db_clob_test`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`db_clob_test`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">INT</span> (<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`news`</span> <span class="built_in">Text</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">INNODB</span> AUTO_INCREMENT = <span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> = utf8 <span class="keyword">COLLATE</span> = utf8_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p>接下来写代码实现写入以及读取的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">write</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = -<span class="number">1</span>;</span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//        InputStream in = null;</span></span><br><span class="line">        Reader reader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = JdbcUtils.getConn();</span><br><span class="line">            String sql = <span class="string">"insert into db_clob_test(news) VALUES(?)"</span>;</span><br><span class="line">            preparedStatement = connection.prepareStatement(sql);</span><br><span class="line"><span class="comment">//            in = new FileInputStream(new File("src/com/rooike/dao/impl/PreparedUserDaoImpl.java"));</span></span><br><span class="line"><span class="comment">//            preparedStatement.setAsciiStream(1,in);</span></span><br><span class="line">            File file = <span class="keyword">new</span> File(<span class="string">"src/com/rooike/dao/impl/PreparedUserDaoImpl.java"</span>);</span><br><span class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">            preparedStatement.setCharacterStream(<span class="number">1</span>, reader,(<span class="keyword">int</span>)file.length());</span><br><span class="line">            result = preparedStatement.executeUpdate();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            JdbcUtils.close(<span class="keyword">null</span>, preparedStatement, connection);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>setAsciiStream(): 此方法用于提供大的ASCII值。</li>
+<li>setCharacterStream(): 此方法用于提供大的UNICODE值。</li>
+<li>setBinaryStream(): 使用此方法，以提供大的二进制值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">    ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line">    PrintWriter writer = <span class="keyword">null</span>;</span><br><span class="line">    BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        String sql = <span class="string">"select news from db_clob_test where id=?"</span>;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">        writer = <span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"src/PreparedUserDaoImpl.java_tmp"</span>))));</span><br><span class="line">        preparedStatement.setInt(<span class="number">1</span>, id);</span><br><span class="line">        resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">            reader = <span class="keyword">new</span> BufferedReader(resultSet.getCharacterStream(<span class="string">"news"</span>));</span><br><span class="line">            String result = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">while</span> ((result = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                writer.println(result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        JdbcUtils.close(resultSet, preparedStatement, connection);</span><br><span class="line">        writer.close();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外读取CLOB数据可以使用getClob方法,具体代码实现如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readByClob</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">        ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line">        PrintWriter writer = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = JdbcUtils.getConn();</span><br><span class="line">            String sql = <span class="string">"select news from db_clob_test where id=?"</span>;</span><br><span class="line">            preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">            writer = <span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"src/PreparedUserDaoImpl.java_tmp"</span>))));</span><br><span class="line">            preparedStatement.setInt(<span class="number">1</span>, id);</span><br><span class="line">            resultSet = preparedStatement.executeQuery();</span><br><span class="line">            <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">                Clob clob = resultSet.getClob(<span class="string">"news"</span>);</span><br><span class="line">                <span class="keyword">if</span>(clob != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    writer.println(clob.getSubString((<span class="keyword">long</span>)<span class="number">1</span>,(<span class="keyword">int</span>)clob.length()));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            JdbcUtils.close(resultSet, preparedStatement, connection);</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="BLOB类型"><a href="#BLOB类型" class="headerlink" title="BLOB类型"></a>BLOB类型</h2><p>BLOB和CLOB都是大字段类型,BLOB是按二进制存储的,而CLOB是可以直接存储文字的。通常像图片、文件、音乐等信息就使用BLOB字段来存储,先将文件转为二进制再存储进去.而像文章或者文本信息就使用CLOB存储。下面我们通过一个示例来进行演示</p>
+<ul>
+<li>创建数据表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`db_blob_test`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`db_blob_test`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">INT</span> (<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`img`</span> <span class="built_in">BLOB</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">INNODB</span> AUTO_INCREMENT = <span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> = utf8 <span class="keyword">COLLATE</span> = utf8_unicode_ci;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>保存二进制数据至数据库中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public int insert()&#123;</span><br><span class="line">    int result = -1;</span><br><span class="line">    Connection connection = null;</span><br><span class="line">    PreparedStatement preparedStatement = null;</span><br><span class="line">    InputStream in = null;</span><br><span class="line">    try &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        String sql = &quot;insert into db_blob_test(img) VALUES(?)&quot;;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line"></span><br><span class="line">        in = new FileInputStream(new File(&quot;src/paul.jpg&quot;));</span><br><span class="line">        preparedStatement.setBinaryStream(1,in);</span><br><span class="line">        result = preparedStatement.executeUpdate();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        JdbcUtils.close(null,preparedStatement,connection);</span><br><span class="line">        try &#123;</span><br><span class="line">            if(in != null)</span><br><span class="line">                in.close();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序运行正常，并且查看数据库，数据库中存放了图片的信息。由于通过SQL语句无法查看图片信息，所以我们通过读取的方式展示一下。</p>
+<ul>
+<li>读取二进制文件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = -<span class="number">1</span>;</span><br><span class="line">    Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">    ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line">    OutputStream out = <span class="keyword">null</span>;</span><br><span class="line">    InputStream in = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        connection = JdbcUtils.getConn();</span><br><span class="line">        String sql = <span class="string">"SELECT img FROM db_blob_test where id = ?"</span>;</span><br><span class="line">        preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">        preparedStatement.setInt(<span class="number">1</span>,id);</span><br><span class="line"></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"src/paul_blob.jpg"</span>);</span><br><span class="line">        resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">            <span class="comment">//Blob blob = resultSet.getBlob("img");</span></span><br><span class="line">            <span class="comment">//in = blob.getBinaryStream();</span></span><br><span class="line">            in = resultSet.getBinaryStream(<span class="string">"img"</span>);</span><br><span class="line">            out = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">            <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>((len = in.read(b)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                out.write(b,<span class="number">0</span>,len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        JdbcUtils.close(resultSet,preparedStatement,connection);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(out != <span class="keyword">null</span>)</span><br><span class="line">                out.close();</span><br><span class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>)</span><br><span class="line">                in.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序运行结束之后，我们可以在src目录下看到该图片.</p>
+<h2 id="其他数据类型"><a href="#其他数据类型" class="headerlink" title="其他数据类型"></a>其他数据类型</h2><p>其他数据类型可以查看<a href="https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-type-conversions.html" target="_blank" rel="external">数据库</a>和jdbc相关的文档,或者在java.sql.Types中查看所涉及的所有类型信息.<br><img src="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_05.jpg" alt="types"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/18/03-jdbc-data-detailed/">JDBC数据类型详解</a></p>
+		<p><span>本文字数:</span>6,006 字</</p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">flwcy</a></p>
+        <p><span>发布时间:</span>2016-07-18, 00:52:13</p>
+        <p><span>最后更新:</span>2016-07-18, 01:07:08</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/18/03-jdbc-data-detailed/" title="JDBC数据类型详解">http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/　　作者: flwcy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/07/15/singleton-pattern/">
+                    如何正确地写出单例模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据类型"><span class="toc-number">1.</span> <span class="toc-text">基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期类型"><span class="toc-number">2.</span> <span class="toc-text">日期类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CLOB类型"><span class="toc-number">3.</span> <span class="toc-text">CLOB类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLOB类型"><span class="toc-number">4.</span> <span class="toc-text">BLOB类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他数据类型"><span class="toc-number">5.</span> <span class="toc-text">其他数据类型</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+	<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"JDBC数据类型详解　| flwcy's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/18/03-jdbc-data-detailed/" data-title="JDBC数据类型详解" data-url="http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"flwcy"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//flwcy.coding.me/js/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=flwcy&threads=2016/07/18/03-jdbc-data-detailed/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/07/15/singleton-pattern/" title="下一篇: 如何正确地写出单例模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/03-jdbc-data-detailed/">JDBC数据类型详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/singleton-pattern/">如何正确地写出单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/02-statement-detailed/">Statement以及PreparedStatement</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/markdown_syntax/">markdown语法说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/build-personal-blog/">hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/01-start-jdbc/">JDBC入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hello-blog/">Hello 个人博客</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 flwcy
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </div>
+</body>
+</html>
