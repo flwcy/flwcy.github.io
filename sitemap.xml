@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
+    
+    <lastmod>2016-07-19T13:43:40.885Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://flwcy.coding.me/2016/07/12/02-statement-detailed/</loc>
     
-    <lastmod>2016-07-18T16:57:57.469Z</lastmod>
+    <lastmod>2016-07-19T12:58:23.278Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://flwcy.coding.me/2016/07/15/singleton-pattern/</loc>
     
     <lastmod>2016-07-15T13:40:22.160Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
-    
-    <lastmod>2016-07-14T15:02:01.165Z</lastmod>
     
   </url>
   

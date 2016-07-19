@@ -3141,10 +3141,3 @@ p.no-result {
 body {
   background: #808080;
 }
-.article-header {
-  border-left: 5px solid #666;
-}
-.article-more-link a {
-  background: #4d4d4d;
-  font-size: 0.8em;
-}
