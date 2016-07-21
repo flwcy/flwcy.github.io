@@ -18,7 +18,7 @@
 <meta name="description" content="由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JDBC数据类型详解">
-<meta property="og:url" content="http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/index.html">
+<meta property="og:url" content="http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/index.html">
 <meta property="og:site_name" content="flwcy's blog">
 <meta property="og:description" content="由于 SQL 数据类型和 Java 数据类型是不同的，因此JDBC 驱动程序在将 Java 数据类型发送到数据库之前，会将其转换为相应的 JDBC 类型。对于大多数数据类型都采用了默认的映射关系。例如，一个 Java int 数据类型转换为 SQL INTEGER。通过默认的映射关系来提供驱动程序之间的一致性。">
 <meta property="og:image" content="http://o9fozt3s5.bkt.clouddn.com/jdbc_data_01.jpg">
@@ -294,15 +294,15 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-03-jdbc-data-detailed" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-04-jdbc-data-detailed" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/18/03-jdbc-data-detailed/" class="article-date">
+      <a href="/2016/07/18/04-jdbc-data-detailed/" class="article-date">
       <time datetime="2016-07-17T16:52:13.000Z" itemprop="datePublished">2016-07-18</time>
 </a>
 
  
-    <a href="/2016/07/18/03-jdbc-data-detailed/#comments" title="查看评论">
+    <a href="/2016/07/18/04-jdbc-data-detailed/#comments" title="查看评论">
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <span class="count-comment"></span>
         
@@ -410,14 +410,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/18/03-jdbc-data-detailed/">JDBC数据类型详解</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/18/04-jdbc-data-detailed/">JDBC数据类型详解</a></p>
 		<p><span>本文字数:</span>6,006 字</</p>
         <p><span>文章作者:</span><a href="/" title="回到主页">flwcy</a></p>
         <p><span>发布时间:</span>2016-07-18, 00:52:13</p>
         <p><span>最后更新:</span>2016-07-18, 01:07:08</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/18/03-jdbc-data-detailed/" title="JDBC数据类型详解">http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/　　作者: flwcy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/18/04-jdbc-data-detailed/" title="JDBC数据类型详解">http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/　　作者: flwcy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -428,6 +428,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/07/21/03-preparedstatement-in/">
+                    PreparedStatement IN语句
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -496,7 +502,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/18/03-jdbc-data-detailed/" data-title="JDBC数据类型详解" data-url="http://flwcy.coding.me/2016/07/18/03-jdbc-data-detailed/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/18/04-jdbc-data-detailed/" data-title="JDBC数据类型详解" data-url="http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/"></div>
     <script>
         var duoshuoQuery = {short_name:"flwcy"};
         var loadComment = function(){
@@ -509,7 +515,7 @@
         
             // Add comment count
             $(function(){ 
-                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=flwcy&threads=2016/07/18/03-jdbc-data-detailed/&callback=?";
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=flwcy&threads=2016/07/18/04-jdbc-data-detailed/&callback=?";
                 $.getJSON(jsonUrl, function(result){
                     $.each(result.response, function(i, field){
                         var value = field.comments;
@@ -556,7 +562,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/07/21/03-preparedstatement-in/" title="上一篇: PreparedStatement IN语句">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -568,7 +576,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/03-jdbc-data-detailed/">JDBC数据类型详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/singleton-pattern/">如何正确地写出单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/02-statement-detailed/">Statement与PreparedStatement</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/markdown_syntax/">markdown语法说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/build-personal-blog/">hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/01-start-jdbc/">JDBC入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hello-blog/">Hello 个人博客</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/03-preparedstatement-in/">PreparedStatement IN语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/04-jdbc-data-detailed/">JDBC数据类型详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/singleton-pattern/">如何正确地写出单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/02-statement-detailed/">Statement与PreparedStatement</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/markdown_syntax/">markdown语法说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/build-personal-blog/">hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/01-start-jdbc/">JDBC入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hello-blog/">Hello 个人博客</a></li></ul>
 
 
 
@@ -583,7 +591,7 @@
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
                 2016 flwcy
-				<span class="post-count">总字数: 27.7k 字</span>
+				<span class="post-count">总字数: 29.1k 字</span>
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
