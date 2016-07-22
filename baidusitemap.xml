@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/07/21/03-preparedstatement-in/</loc>
+    <lastmod>2016-07-22T15:16:45.266Z</lastmod>
+    <data>
+        <display>
+        <title>PreparedStatement IN语句</title>
+        <pubTime>2016-07-21T12:53:55.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/</loc>
     <lastmod>2016-07-21T16:07:50.714Z</lastmod>
     <data>
@@ -23,26 +43,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/07/21/03-preparedstatement-in/</loc>
-    <lastmod>2016-07-21T13:33:39.172Z</lastmod>
-    <data>
-        <display>
-        <title>PreparedStatement IN语句</title>
-        <pubTime>2016-07-21T12:53:55.000Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
