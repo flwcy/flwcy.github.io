@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
+    
+    <lastmod>2016-08-02T15:16:26.930Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://flwcy.coding.me/about/index.html</loc>
     
     <lastmod>2016-07-30T02:27:55.923Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://flwcy.coding.me/2016/07/18/04-jdbc-data-detailed/</loc>
     
     <lastmod>2016-07-21T16:07:50.714Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
-    
-    <lastmod>2016-07-19T13:43:40.885Z</lastmod>
     
   </url>
   
