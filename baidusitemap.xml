@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
+    <lastmod>2016-08-04T12:58:01.731Z</lastmod>
+    <data>
+        <display>
+        <title>JDBC入门</title>
+        <pubTime>2016-06-30T11:55:07.000Z</pubTime>
+        
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://flwcy.coding.me/2016/06/28/hello-blog/</loc>
     <lastmod>2016-08-02T15:16:26.930Z</lastmod>
     <data>
@@ -71,26 +91,6 @@
         <display>
         <title>Statement与PreparedStatement</title>
         <pubTime>2016-07-11T17:17:49.000Z</pubTime>
-        
-        <tag>jdbc</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术札记" url="http://flwcy.coding.me/categories/%E6%8A%80%E6%9C%AF%E6%9C%AD%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://flwcy.coding.me/2016/06/30/01-start-jdbc/</loc>
-    <lastmod>2016-07-17T16:44:31.443Z</lastmod>
-    <data>
-        <display>
-        <title>JDBC入门</title>
-        <pubTime>2016-06-30T11:55:07.000Z</pubTime>
         
         <tag>jdbc</tag>
          
